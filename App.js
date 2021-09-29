@@ -1,56 +1,34 @@
 // import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, Image, TouchableHighlight, Alert, SafeAreaView, TouchableNativeFeedback,
-         Button, StatusBar, Platform} from 'react-native';
+         Button, StatusBar, Platform, Dimensions} from 'react-native';
+
+import {useDimensions, useDeviceOrientation} from '@react-native-community/hooks';
 
 export default function App() {
 
-  // let x = 1;
-  console.log("App executed");
+  // console.log("App executed");
+  //to see with and height of phone
+  // console.log(Dimensions.get('screen'));
+  //Dimensions update when phone is on portrait or landscape
+  // console.log(useDimensions(),"test")
+  //returs object with properties true/false for currrent position of portrait and landscape
+  // console.log(useDeviceOrientation());
 
-  // const handlePress = () => {console.log("Text has been clicked")};
-
-  console.log(require('./assets/icon.png'));
-
+  const {landscape} = useDeviceOrientation();
   
   return (
-    // <View style={styles.container}>
-    //   <Text onPress={handlePress}>Hello React native! - Let;s make this a really long text and see what we can do with all this!</Text>
-    //   <TouchableNativeFeedback onPress={()=> console.log('image tapped')}>
-    //       <Image 
-    //       blurRadius={1}
-    //       fadeDuration={1000}
-    //       source={{
-    //         width:200,
-    //         height:300,
-    //         uri: "https://picsum.photos/200/300"}}/> */}
 
-    //        <View style={ {width:200, height: 70, backgroundColor:"dodgerblue"}}>
-
-    //         </View>
-
-    //   </TouchableNativeFeedback>
-    // </View>
-
-    <SafeAreaView>
-        {/* <Button color="orange" title="click me!" onPress={ () => Alert.alert(
-          "My Tittle", "My message", [
-            {text:"yes", onPress: ()=> console.log("User clicked Yes")},
-            {text:"no", onPress: ()=> console.log("User clicked No")}
-          ]
-        )}/> */}
-
-
-        <Button color="orange" title="click me!" onPress={ () => Alert.prompt(
-          "My Tittle", "My message", (text) => console.log(text)
-        )}/>
+    <SafeAreaView style={styles.container}>
+        <View style={{
+          backgroundColor:"dodgerblue",
+          width:'100%',
+          //if phone is on landscape chage height to 100% else 30%
+          height: landscape ? '100%' : '30%'
+        }}></View>
     </SafeAreaView>
 
-      // <SafeAreaView style={[styles.container, containerStyle]}>
-
-
-
-      // </SafeAreaView>
+   
   );
 }
 
